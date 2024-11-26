@@ -1,0 +1,1 @@
+# sohosai-ime-dictionary

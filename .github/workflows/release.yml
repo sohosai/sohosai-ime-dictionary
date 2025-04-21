@@ -1,0 +1,34 @@
+name: Build master document
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build_dict:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: setup tools
+        run: |
+          sudo apt install -U nkf
+      - name: Build
+        run: |
+          bash build.sh
+      - name: Upload
+        uses: softprops/action-gh-release@v2
+        with:
+          body: |
+            - Google IMEは`sohosai_GoogleIME.txt`
+            - Windowsは`sohosai_Windows.txt`
+            - macOSは`sohosai_macOS.txt`
+            - ATOK(Windows)は`sohosai_ATOK-Windows.txt`
+            - ATOK(macOS)は`sohosai_ATOK-macOS.txt`
+            
+            を用いてください
+          files: |
+            build/sohosai_GoogleIME.txt
+            build/sohosai_Windows.txt
+            build/sohosai_macOS.txt
+            build/sohosai_ATOK-Windows.txt
+            build/sohosai_ATOK-macOS.txt

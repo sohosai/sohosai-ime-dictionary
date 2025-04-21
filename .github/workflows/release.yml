@@ -15,16 +15,23 @@ jobs:
       - name: Build
         run: |
           bash build.sh
+    
+      - name: Get current date and time for release
+        env:
+          TZ: "Asia/Tokyo"
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
       - name: Upload
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: release-${{ steps.date.outputs.date }}
           body: |
             - Google IMEは`sohosai_GoogleIME.txt`
             - Windowsは`sohosai_Windows.txt`
             - macOSは`sohosai_macOS.txt`
             - ATOK(Windows)は`sohosai_ATOK-Windows.txt`
             - ATOK(macOS)は`sohosai_ATOK-macOS.txt`
-            
+
             を用いてください
           files: |
             build/sohosai_GoogleIME.txt

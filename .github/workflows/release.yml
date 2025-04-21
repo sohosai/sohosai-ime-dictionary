@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: setup tools
+      - name: Setup tools
         run: |
           sudo apt install -U nkf
       - name: Build

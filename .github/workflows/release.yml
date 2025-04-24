@@ -15,7 +15,7 @@ jobs:
       - name: Build
         run: |
           bash build.sh
-    
+
       - name: Get current date and time for release
         env:
           TZ: "Asia/Tokyo"
@@ -34,8 +34,4 @@ jobs:
 
             を用いてください
           files: |
-            build/sohosai_GoogleIME.txt
-            build/sohosai_Windows.txt
-            build/sohosai_macOS.txt
-            build/sohosai_ATOK-Windows.txt
-            build/sohosai_ATOK-macOS.txt
+            build/*
